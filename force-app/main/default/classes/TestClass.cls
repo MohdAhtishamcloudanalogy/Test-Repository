@@ -1,7 +1,8 @@
 public with sharing class TestClass {
-    public TestClass() {
-        Integer a = 10;
-        Integer b = 20;
+    public static void add(){
+        Integer a = 5;
+        Integer b = 5;
         Integer c = a+b;
+        System.debug('c----->'+c);
     }
 }
