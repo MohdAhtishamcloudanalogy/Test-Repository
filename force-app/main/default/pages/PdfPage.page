@@ -1,0 +1,322 @@
+<apex:page Controller="PdfController" renderAs="pdf" sidebar="false" showHeader="false" applyHtmlTag="false" applyBodyTag="false" > 
+    <html>
+        <head>
+            <style type="text/css" media="print">
+                @page {
+                
+                @top-left {
+                
+                content: element(header);
+                }
+                @bottom-left {
+                content: element(footer);
+                }
+                }
+                div.header {
+                padding-bottom: 10px;
+                padding-left: 0px;
+                position: running(header);
+                }
+                div.footer {
+                
+                position: running(footer);
+                }
+                .pagenumber:before {
+                content: counter(page);
+                }
+                .pagecount:before {
+                content: counter(pages);
+                }
+                .headingCss{
+                padding-top:10%;
+                }
+                table{
+                -fs-table-paginate: paginate;
+                border-collapse: seperate;
+                border-spacing: 3px;
+                border:0px solid green;
+                width:100%;
+                }
+                div.content{
+                
+                margin-top:150px;
+                width:100%;
+                border:0px solid blue;
+                }
+                table{
+                -fs-table-paginate: paginate;
+                border-collapse: seperate;
+                border-spacing: 3px;
+                border:0px solid red;
+                width:100%;
+                }
+                
+                } 
+                
+                
+            </style>
+            
+            <title>Berkshire Hathaway Specialty Insurance Company</title>
+        </head>
+        <div class ="header">
+            <apex:image value="{!URLFOR($Resource.Tempp,'Logo.png')}"/>
+        </div>
+        <div class="footer">
+            <div>Page <span class="pagenumber"/> of <span class="pagecount"/></div>
+        </div>
+        <div>
+            <div class="headingCss">
+                <center><h1 style="color:#B98329;">Plant &amp; Equipment Insurance Policy Schedule</h1></center>
+            </div>
+            <table class="tableCss">
+                <tr>
+                    <td style="border:0px solid black; width:14%;font-size:12px;height:1%;">Master Policy Number:</td>
+                    <td style="border:0px solid black; width:33%;padding:0px;font-size:12px;height:1%;"><apex:outputText value="{!accList.Master_Policy_Number__c}"></apex:outputText></td>
+                    <td style="border:0px solid black; width:17%;font-size:12px;height:1%;">Client Policy Number:</td>
+                    <td style="border:0px solid black; width:8%;padding:0px;font-size:12px;height:1%;"><apex:outputText value="{!accList.Client_Policy_Number__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;margin-top:1%;">Insured:</td>
+                    
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;margin-left:20px;"><apex:outputText value="{!accList.Insured__c}"></apex:outputText></td> 
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                
+                <tr>
+                    <td style="border:0px solid black;width:0%;height:1%;font-size:12px;height:1%;">ABN/ACN:</td>
+                    <td style="border:0px solid black;width:0%;padding-right:20px;font-size:12px;height:1%;"><apex:outputText value="{!accList.ABN_ACN__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;">Situation:</td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;"><apex:outputText value="{!accList.Situation__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;">Interested Party:</td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;"><apex:outputText value="{!accList.Interested_Party__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;">Period of Insurance:</td>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;">From: <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                        <apex:param value="{!accList.From__c}" /></apex:outputText></td>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;">To: <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                        <apex:param value="{!accList.To__c}" /></apex:outputText> </td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;"></td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;margin-right:20px;">Both days at 4:00pm Local Standard Time</td> 
+                    
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                
+                <tr>
+                    <td style="border:0px solid black; width:0%;font-size:12px;height:1%;">Business:</td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;"><apex:outputText value="{!accList.Business__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td style="border:0px solid black; width:0%;font-size:12px;height:1%;">Description of Equipment:</td>
+                    <td style="border:0px solid black; width:0%;padding-left:0px;font-size:12px;height:1%;"><apex:outputText value="{!accList.Description_of_Equipment__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                
+                <tr>
+                    <td style="border:0px solid black; width:0%;font-size:12px;height:1%;">Equipment SerialNo./VIN No./ID No.:</td>
+                    <td style="border:0px solid black; width:0%;padding-left:0px;font-size:12px;height:1%;"><apex:outputText value="{!accList.Equipment_Serial_No_VIN_No_ID_No__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;">Sum Insured:</td>
+                    <td style="border:0px solid black;width:0%;padding:0px;font-size:12px;height:1%;">Annual Period 1:</td>
+                    <td style="border:0px solid black;width:0%;padding:0px;font-size:12px;height:1%;"><apex:outputText value="${!accList.Annual_Period_1__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;"></td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;">Annual Period 2:</td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;"><apex:outputText value="${!accList.Annual_Period_2__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;"></td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;">Annual Period 3:</td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;"><apex:outputText value="${!accList.Annual_Period_3__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;"></td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;">Annual Period 4:</td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;"><apex:outputText value="${!accList.Annual_Period_4__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;"></td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;">Annual Period 5:</td>
+                    <td style="border:0px solid black;width:0%;padding-left:0px;font-size:12px;height:1%;"><apex:outputText value="${!accList.Annual_Period_5__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td colspan="2" style="border:0px solid black;width:0%;font-size:12px;height:1%;">Additional Cover – Special Limits:</td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td colspan="4" style="font-size:12px;height:1%;">All Special Limits for the Additional Cover are part of, not in addition to, the Sum Insured save for Recovery Costs (damage), which Special Limits sits
+                        in addition to the Sum Insured.</td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Secondary Mechanical Damage:</td>
+                    <td colspan="2" style="border:0px solid black;width:0%;font-size:12px;height:1%;"><apex:outputText value="{!accList.Secondary_Mechanical_Damage__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;margin-top:50px;">Expediting Costs:</td>
+                    <td colspan="2" style="border:0px solid black;width:0%;font-size:12px;height:1%;"><apex:outputText value="{!accList.Expediting_Costs__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Additional Costs:</td>
+                    <td colspan="2" style="border:0px solid black;width:0%;font-size:12px;height:1%;"><apex:outputText value="{!accList.Additional_Costs__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Extra Costs of Reinstatement:</td>
+                    <td colspan="2" style="border:0px solid black;width:0%;font-size:12px;height:1%;"><apex:outputText value="{!accList.Extra_Costs_of_Reinstatement__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+                
+                <tr>
+                    
+                    <td style="border:0px solid black;width:0%;;font-size:12px;height:1%;padding-left:0px;">Recovery Costs (No Damage):</td>
+                    <td colspan="2" style="border:0px solid black;width:0%;;font-size:12px;height:1%;"><apex:outputText value="{!accList.Recovery_Costs_No_Damage__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Recovery Costs (Damage):</td>
+                    <td colspan="2" style="border:0px solid black;width:0%;font-size:12px;height:1%;"><apex:outputText value="{!accList.Recovery_Costs_Damage__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Employee's Property Damage:</td>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;"><apex:outputText value="{!accList.Employee_s_Property_Damage__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;margin-top:120px;">Emergency Services Charges:</td>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;"><apex:outputText value="{!accList.Emergency_Services_Charges__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Tools of Trade:</td>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;"><apex:outputText value="{!accList.Tools_of_Trade__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Locks and Keys:</td>
+                    <td colspan="2" style="border:0px solid black;width:0%;font-size:12px;height:1%;"><apex:outputText value="{!accList.Locks_and_Keys__c}"></apex:outputText></td>
+                </tr>
+                
+                
+            </table>
+        </div>
+        <div class="content">
+            <table class="next" style="width:360px;border:0px solid green;">
+                
+                
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Excess:</td>
+                    <td style="border:0px solid black;width:10%;font-size:12px;height:1%;padding-left:12px;"><apex:outputText value="{!accList.Excess__c}"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td style="border0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Premium:</td>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:12px;"><apex:outputText value="${!accList.Premium__c} Including GST (where applicable)"></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                </tr> 
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Dated:</td>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:12px;"><apex:outputText value="{0,date,MM'/'dd'/'yyyy}"><apex:param value="{!accList.Dated__c}" /></apex:outputText></td>
+                </tr>
+                <tr>
+                    <td style="border:0px solid black;width:0%;font-size:12px;height:1%;padding-left:0px;">Sign:</td>
+                    <td><apex:image value="{!URLFOR($Resource.signOfLogo,'signOfLogo.png')}"/></td>  
+                </tr> 
+            </table> 
+            
+        </div> 
+        
+    </html>
+</apex:page>

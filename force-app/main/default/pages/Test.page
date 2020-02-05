@@ -1,0 +1,60 @@
+<apex:page controller="ContactController">
+    <html>
+        <head>
+            <script type="text/javascript">
+            var index = 1;
+            let count;
+            function insertRow(){
+                var table=document.getElementById("myTable");
+                var row=table.insertRow(table.rows.length);
+                var cell1=row.insertCell(0);
+                var t1=document.createElement("input");
+                t1.id = "txtSrNo"+index;
+                cell1.appendChild(t1);
+                var cell2=row.insertCell(1);
+                var t2=document.createElement("input");
+                t2.id = "txtFirstName"+index;
+                cell2.appendChild(t2);
+                var cell3=row.insertCell(2);
+                var t3=document.createElement("input");
+                t3.id = "txtLastName"+index;
+                cell3.appendChild(t3);
+                index++;
+                count = index;
+            }
+            
+            function deleteRow(){
+                document.getElementById("myTable").deleteRow(count);
+                count--;
+            }
+            </script>
+        </head>
+        
+        
+        <body>
+            
+            <apex:form >
+                <table id="myTable">
+                    <th>Sr.No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th> 
+                    <th>Action</th>
+                    <apex:repeat value="{!conList}" var="con">
+                        <tr>     
+                            
+                            <td><apex:inputText id="txtSrNo"/></td>
+                            <td><apex:inputText value="{!con.FirstName}" id="txtFirstName" /></td>
+                            <td><apex:inputText value="{!con.LastName}" id="txtLastName" /></td>
+                            <td><div class="image1"  id="txtButton1"><apex:image onclick="insertRow();" value="{!URLFOR($Resource.Add,'Add.png')}"/></div></td>
+                            <td><div class="image2" id="txtButton2"><apex:image onclick="deleteRow();" value="{!URLFOR($Resource.Minus,'Minus.png')}"/></div></td>
+                            
+                        </tr>
+                    </apex:repeat>
+                </table>
+                <apex:commandButton value="Add" action="{!AddRow}"/>
+                <apex:commandButton value="Pre" action="{!removeRow}"/>
+                <apex:commandButton value="Save" action="{!saveRow}"/>
+            </apex:form>
+        </body>
+    </html>
+</apex:page>

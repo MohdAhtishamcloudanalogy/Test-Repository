@@ -1,0 +1,100 @@
+<apex:page renderAs="pdf" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" controller="TranslationWorkbenchDemoController">
+    <apex:form >
+        <html>
+            <head>
+                <style type="text/css" media="print">
+                    @page {
+                    margin-bottom: 9%;
+                    margin-right: 7%;
+                    margin-left: 5%;
+                    size: A4;
+                    }
+                </style>
+                
+                <title>Test Salesforce</title>
+            </head>
+            <div class="header">
+                <div style="height: 70px;margin-bottom: 10px;">
+                    <div style="float: right;">
+                        <img src="https://ahtishamlightningurl-dev-ed--c.visualforce.com/resource/1575304618000/salesforce_image" alt="" width="50%" height="70%" style="" />
+                    </div>
+                </div>
+            </div>
+            <div>
+                <apex:pageBlock >
+                    <apex:pageBlockSection title="Test Translation Workbench Page">
+                        <div style="float: left;">
+                            <h1><apex:outputText value="{!contactObj.Name}" /></h1>
+                            <h1><apex:outputText value="{!contactObj.Email}" /></h1>
+                            <h1><apex:outputText value="{!contactObj.MobilePhone}" /></h1>
+                            <h1><apex:outputText value="{!contactObj.LeadSource}" /></h1>
+                        </div>
+                    </apex:pageBlockSection>
+                    <div style="padding-top:0px">
+                        <apex:pageBlockSection title="">
+                            <table width="100%" style="border: 2px dashed black;">
+                                <tr>
+                                    <th>{!$Label.Product_Name}</th>
+                                    <th style="padding-left:60px">{!$Label.Product_Price}</th>
+                                    <th style="padding-left:60px">{!$Label.Product_Quantity}</th>
+                                    <th style="padding-left:60px">{!$Label.Count}</th>
+                                </tr>
+                            </table>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection title="">
+                            <table width="100%">
+                                <apex:repeat value="{!productList}" var="proList">
+                                    <tr>
+                                        <td>{!proList.Name}</td>
+                                        <td style="padding-left:80px">{!proList.price__c}</td> 
+                                        <td style="padding-left:120px">{!proList.Quantity__c}</td>
+                                        <td style="padding-left:165px">{!proList.count__c}</td>
+                                    </tr>
+                                </apex:repeat>
+                            </table>
+                        </apex:pageBlockSection>
+                    </div>
+                </apex:pageBlock>
+                <div style="padding-top:50px">
+                    <b>Disclaimer :</b>
+                </div>
+                <div style="padding-top:25px">
+                    <table class="tableCss" style="border: 2px solid black;">
+                        <tr>
+                            <td colspan="2" style="border: 2px solid black;padding-right:5px">
+                                Twinkle, twinkle, little star,
+                                How I wonder what you are.
+                                Up above the world so high,
+                                Like a diamond in the sky.
+                                Twinkle, twinkle, little star,
+                                How I wonder what you are!
+                                
+                                When the blazing sun is gone,
+                                When he nothing shines upon,
+                                Then you show your little light,
+                                Twinkle, twinkle, all the night.
+                                Twinkle, twinkle, little star,
+                                How I wonder what you are!
+                            </td>
+                            <td colspan="2" style="border: 2px solid black;padding-left:5px">
+                                Schitter schitter kleine ster,
+                                Hoe ik me afvraag wat je bent.
+                                Boven de wereld zo hoog,
+                                Als een diamant in de lucht.
+                                Schitter schitter kleine ster,
+                                Hoe ik me afvraag wat je bent!
+                                
+                                Wanneer de brandende zon weg is,
+                                Wanneer hij niets schijnt,
+                                Dan laat je je kleine licht zien,
+                                Twinkle, twinkle, de hele nacht.
+                                Schitter schitter kleine ster,
+                                Hoe ik me afvraag wat je bent!
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </html>
+    </apex:form>
+</apex:page>
